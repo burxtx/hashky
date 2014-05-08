@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block external %}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ STATIC_URL }}wechat/css/bootstrap.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}wechat/css/bootstrap-responsive.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}wechat/css/style.css">
+  <script src="{{ STATIC_URL }}wechat/jquery.js"></script>
+  <script src="{{ STATIC_URL }}wechat/js/bootstrap.js"></script>
+  <script src="{{ STATIC_URL }}wechat/js/nav.js"></script>
+  <!--<script src="http://files.cnblogs.com/rubylouvre/bootstrap-button.js"></script>-->
+{% endblock %}
+
+{% block nav%}
+  <!-- Add top fixed nav bar -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"
+          type="button">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/">Hashky</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="">
+              <a href="/">Home</a>
+            </li>
+            {% if user.is_authenticated %}
+              <li class="">
+                <a href="/save/">New</a>
+              </li>
+              <li class="">
+                <a href="/search/">Search</a>
+              </li>
+              <li class="">
+                <a href="/user/{{ user.username }}/">{{ user.username }}'s post</a>
+              </li>
+              <li class="">
+                <a href="/wechat/product/">DongXi</a>
+              </li>
+              <li class="">
+                <a href="{% url account:logout_page %}">Logout</a>
+              </li>
+              <li class="">
+                <form class="navbar-search pull-right">
+                  <input type="text" class="search-query" placeholder="Search">
+                </form>
+              </li>
+            {% else %}
+              <li class="">
+                <!-- template syntax doesn't support \n\r\ -->
+                {% if request.path not in "/register/success/" and request.path not in "/accounts/login/" %}
+                  <a href="{% url account:login_page %}?next={{ request.path }}">login</a>
+                {% else %}
+                  <a href="{% url account:login_page %}?next=/">login</a>
+                {% endif %}
+              </li>
+              <li class="">
+                <a href="/register/">sign up</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+

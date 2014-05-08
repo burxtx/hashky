@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ username }}{% endblock %}
+{% block head %}{{ username }}'s drafts{% endblock %}
+{% block page %}<script src="{{ STATIC_URL }}blog/js/follow.js"></script>{% endblock %}
+{% block content %}
+	{% include "blog/draft_list.html" %}
+{% endblock %}

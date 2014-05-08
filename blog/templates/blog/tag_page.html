@@ -1,0 +1,6 @@
+{% extends "blog/base.html"  %}
+{% block title  %}Tag: {{ tag_name }}{% endblock %}
+{% block head %}Blogposts for tag: {{ tag_name }}{% endblock %}
+{% block content %}
+  {% include "blog/blogpost_list.html" %}
+{% endblock  %}

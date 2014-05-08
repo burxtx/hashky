@@ -1,0 +1,3 @@
+[submodule "hashky/static/tagmanager"]
+	path = hashky/static/tagmanager
+	url = git@github.com:max-favilli/tagmanager.git

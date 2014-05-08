@@ -1,0 +1,81 @@
+{% extends "blog/base.html" %}
+{% block page %}
+    {{ form.media }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}blog/css/jquery.ui.autocomplete.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}tagmanager/tagmanager.css">
+    <!-- <link rel="stylesheet" href="{{ STATIC_URL }}jQuery-Tags-Input/jquery.tagsinput.css"> -->
+    <script type="text/javascript" src="{{ STATIC_URL }}blog/js/jquery.ui.autocomplete.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}tagmanager/tagmanager.js"></script>
+    <!--<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}jQuery-Tags-Input/jquery.tagsinput.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/tag_autocomplete.js"></script>-->
+    <script type="text/javascript">
+        // jQuery(".tm-input").tagsManager();
+    // tinyMCE.init({
+    //     mode: "textareas",
+    //     theme: "advanced",
+    //     theme_advanced_resizing : true
+    // });
+    // $(document).ready(function(){
+    //     // $('#tags').tagsInput();
+    //     $('.tm-input').tagsManager({
+    //          // hiddenTagListId: 'hidden_tags'
+    //     });
+    //     // $('#id_tags').tagsManager();
+    //     // });
+    //     $('#btn').click(function(){
+    //         $('#tags').val($(':hidden_tags').val());
+    //     });
+    // });
+        $(function(){
+            $('.tm-input').tagsManager({
+                // hiddenTagListId: 'hidden_tags'
+            });
+        });
+        // $('button').click(function(){
+        //     $('#tags').val($("[name='hidden-tags']").val());
+        // });
+    </script>
+{% endblock %}
+{% block title %}New shares{% endblock %}
+{% block head %}Share new{% endblock %}
+{% block subhead %}{% endblock %}
+{% block content %}
+<div class="shortcuts">
+    <a href="/user/{{ user }}/" class="username">My posts</a>
+    <a href="/user/{{ user }}/draft" class="username">My drafts</a>
+</div>
+<form class="form-horizontal" method="post" action=".">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+	<div class="control-group">
+    {{ form.title.errors }}
+		<label class="control-label" for="id_username">Title:</label>
+    		<div class="controls">
+    			{{ form.title }}
+    		</div>
+    </div>
+    <div class="control-group">
+    {{ form.body.errors }}
+		<label class="control-label" for="id_post">Post:</label>
+			<div class="controls">
+				{{ form.body }}
+    		</div>
+    </div>
+    <div class="control-group">
+    {{ form.tags.errors }}
+        <label class="control-label" for="id_tag">Tag:</label>
+            <div class="controls">
+                <!-- {{ form.tags }} -->
+                <input name="tags" id="tags" type="text" placeholder="Input tags..." class="tm-input" />
+            </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button name="submit_live" value="submit" type="submit" class="btn btn-success">Submit</button>
+            <button name="submit_draft" value="save as draft" type="submit" class="btn btn-warning">Save as draft</button>
+        </div>
+    </div>
+    <!-- <input type="submit" value="save" /> -->
+</form>
+{% endblock %}

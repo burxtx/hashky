@@ -1,0 +1,16 @@
+{% extends "wechat/base.html" %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block head %}{{ product.name }}{% endblock %}
+{% load markup %}
+{% block content %}
+  {{ product.name|markdown|safe }}
+  {{ product.desc|markdown|safe }}
+  {{ product.price|markdown|safe }}
+  {{ product.timestamp|markdown|safe }}
+  {{ product.user.user|markdown|safe }}
+  {% include "blog/ratings.html" %}
+  {% if user.id == product.wechatuser_id%}
+    {% include "blog/ratings_form.html" %}
+  {% endif %}
+{% endblock %}
+
