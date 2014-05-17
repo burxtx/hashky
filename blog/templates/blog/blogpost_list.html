@@ -5,7 +5,8 @@
     {% for blogpost in blogposts %}
       <div class="post-item">
         <h2 class="post-item-title">
-        <a href="/blogpost/{{ blogpost.id }}" class="title">{{ blogpost.title }}</a></h2>
+        <a href="/blogpost/{{ blogpost.id }}" class="blogpost-title">{{ blogpost.title }}</a></h2>
+        <div class="timestamp">{{ blogpost.create_time|timesince }}</div>
         <div class="row">
           <div class="span9">
             {% if show_user %}

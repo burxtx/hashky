@@ -1,3 +1,4 @@
+import time, datetime
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.shortcuts import render_to_response, get_object_or_404
@@ -70,14 +71,16 @@ def blogpost_detail_page(request, blogpost_id):
             'object': blogpost,
             'show_tags': True,
             'show_body': True,
-            'show_edit': username==request.user.username,
+            'show_edit': username==request.user.username
             })
         return render_to_response('blog/blogpost_detail.html', variables)
+    # directly publish from draft page via AJAX
     elif request.method == 'POST':
         if blogpost_id:
             blogpost, created = BlogPost.objects.get_or_create(user=request.user, pk=blogpost_id)
         blogpost.title = request.POST['title']
         blogpost.body = request.POST['body']
+        # blogpost.time = datetime.datetime.now()
         tag_names = request.POST.getlist('tags[]')
         blogpost.status = BlogPost.LIVE_STATUS
         for tag_name in tag_names:
@@ -103,10 +106,9 @@ def draft_detail_page(request, blogpost_id):
 
 def _blogpost_save(request, form, status, id=None):
     blogpost, created = BlogPost.objects.get_or_create(user=request.user, pk=id)
-    # else:
-    #     blogpost = BlogPost.objects.create(user=request.user)
     blogpost.body = form.cleaned_data['body']
     blogpost.title = form.cleaned_data['title']
+    # blogpost.time = datetime.datetime.now()
     if not created:
         blogpost.tag_set.clear()
     tag_names = form.cleaned_data['tags'].split(',')

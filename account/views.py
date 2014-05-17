@@ -7,9 +7,6 @@ from django.contrib.auth import logout
 from django.template import RequestContext
 from account.forms import *
 
-import pdb
-pdb.set_trace()
-
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))

@@ -3,7 +3,9 @@
 {% block head %}{{ blogpost.title }}{% endblock %}
 {% load markup %}
 {% block content %}
+  Created in {{ blogpost.create_time|timesince }} ago
   {{ blogpost.body|markdown|safe }}
+  Last modified in {{ blogpost.modify_time|timesince }} ago
   {% if show_tags %}
     {% if blogpost.tag_set.all %}
       <div class="post-tags">

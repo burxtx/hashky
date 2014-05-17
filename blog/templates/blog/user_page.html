@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block title %}{{ username }}{% endblock %}
-{% block head %}Blog post for {{ username }}{% endblock %}
+{% block head %}Blog posts from {{ username }}{% endblock %}
 {% block page %}
 <script type="text/javascript">
   $(document).ready(function(){
@@ -13,8 +13,8 @@
 {% endblock %}
 {% block rcontent %}
   {% ifequal user.username username %}
-    <a href="/following/{{ username }}/">people you are following...</a>
-    <a href="/tag-following/{{ username }}/">tags you are following...</a>
+    <a href="/following/{{ username }}/">People you are following...</a>
+    <a href="/tag-following/{{ username }}/">Tags you like...</a>
   {% else %}
     {% if is_following %}
       <a class="btn unfollow" href="javascript:void(0)">Unfollow</a>
