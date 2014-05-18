@@ -1,2 +1,4 @@
+django==1.4.13
+markdown
 django-pagedown
 django-generic-ratings
