@@ -10,7 +10,7 @@ $(function(){
   var url = window.location.pathname;  
   var activePage = stripTrailingSlash(url);
 
-  $('.nav li a').each(function(){  
+  $('.navbar li a').each(function(){  
     var currentPage = stripTrailingSlash($(this).attr('href'));
 
     if (activePage == currentPage) {
