@@ -1,4 +1,5 @@
 {% extends "account/base.html" %}
+{% block sub-external %}<link rel="stylesheet" href="{{ STATIC_URL }}account/css/signin.css">{% endblock %}
 {% block title %}User Login{% endblock %}
 {% block head %}User Login{% endblock %}
 {% block content %}
@@ -6,31 +7,21 @@
     <p>Your username and password didn't match.
       Please try again.</p>
   {% endif %}
-  <form class="form-horizontal" method="post" action="" >
+  <form class="form-signin" method="post" action="" >
     {% csrf_token %}
-    <div class="control-group">
-      <label class="control-label" for="id_username">Username:</label>
-      <div class="controls">
-        {{ form.username }}
-      </div>
-    </div>
-    <div class="control-group">
-      <label class="control-label" for="id_password">Password:</label>
-      <div class="controls">
-        {{ form.password }}
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <input type="checkbox" name="remember_me"> Remember me
-        </label>
-        <button type="submit" class="btn" value="Login">Log in</button>
-        <!--following line is required for redirect-->
-        <!-- <input type="hidden" name="next" value="{{ next|escape }}" /> -->
-        <input type="hidden" name="next" value="{{ next }}" />
-      </div>
-    </div>
+    {{ form.username.errors }}
+    <label class="control-label" for="id_username">Username:</label>
+    <input class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" type="text" maxlength="30" autofocus="" required="" placeholder="Email address">
+    {{ form.password.errors }}
+    <label class="control-label" for="id_password">Password:</label>
+    <input class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" type="password" placeholder="Password">
+    <label class="checkbox">
+      <input type="checkbox" name="remember-me"> Remember me
+    </label>
+    <button type="submit" class="btn btn-lg btn-primary btn-block" value="Login">Log in</button>
+    <!--following line is required for redirect-->
+    <!-- <input type="hidden" name="next" value="{{ next|escape }}" /> -->
+    <input type="hidden" name="next" value="{{ next }}" />
     
   </form>
 {% endblock %}
