@@ -167,3 +167,7 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 TEMPLATE_CONTEXT_PROCESSORS += (
      'django.core.context_processors.request',
 )
+
+# Import the default pagedown css first, then our custom CSS sheet
+# to avoid having to specify all the default styles
+PAGEDOWN_WIDGET_CSS = ('pagedown/demo/browser/demo.css', "pagedown/custom.css",)
