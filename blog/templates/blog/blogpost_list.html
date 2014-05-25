@@ -1,50 +1,46 @@
 <script src="{{ STATIC_URL }}blog/js/delete.js"></script>
 {% load markup %}
 {% if blogposts %}
-  <div class="post-bucket">
-    {% for blogpost in blogposts %}
-      <div class="blog-post">
-        <h2 class="blog-post-title"><a href="/blogpost/{{ blogpost.id }}">{{ blogpost.title }}</a></h2>
-        <p class="blog-post-meta">
-          <div class="datetime">
-            {{ blogpost.create_time }}
+  {% for blogpost in blogposts %}
+    <div class="blog-post">
+      <h2 class="blog-post-title"><a href="/blogpost/{{ blogpost.id }}">{{ blogpost.title }}</a></h2>
+      <div class="blog-post-meta">
+        <div class="datetime">
+          {{ blogpost.create_time }}
+        </div>
+        {% if show_user %}
+          <div class="author">
+            Posted by:  
+            <a href="/user/{{ blogpost.user.username }}/" class="username">
+            {{ blogpost.user.username }}</a>
           </div>
-          {% if show_user %}
-            <div class="author">
-              Posted by:  
-              <a href="/user/{{ blogpost.user.username }}/" class="username">
-              {{ blogpost.user.username }}</a>
-            </div>
-          {% endif %}
-          {% if show_edit %}
-            <div class="post-controls">
-              <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
-            </div>
-            <div class="post-controls">
-              <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
-            </div>
-          {% endif %}
-        </p>
-        {% if show_body %}
-          <div class="blog-body">
-            {{ blogpost.body|markdown|safe|truncatewords_html:20 }}
-            <a href="/blogpost/{{ blogpost.id }}">Read more...</a>
+        {% endif %}
+        {% if show_edit %}
+          <div class="post-controls">
+            <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
           </div>
-        {% endif%}
-        {% if show_tags %}
-          {% if blogpost.tag_set.all %}
-            <div class="post-tags">
-              {% for tag in blogpost.tag_set.all %}
-                <div class="post-tag">
-                  #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
-                </div>
-              {% endfor %}
-            </div>
-          {% endif %}
+          <div class="post-controls">
+            <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
+          </div>
         {% endif %}
       </div>
-    {% endfor %}
-  </div>
+      {% if show_body %}
+        {{ blogpost.body|markdown|safe|truncatewords_html:20 }}
+        <a href="/blogpost/{{ blogpost.id }}">Read more...</a>
+      {% endif%}
+      {% if show_tags %}
+        {% if blogpost.tag_set.all %}
+          <div class="post-tags">
+            {% for tag in blogpost.tag_set.all %}
+              <div class="post-tag">
+                #<a class="post-tag" href="/tag/{{ tag.name|urlencode }}/">{{ tag.name }}</a>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endfor %}
 {% else %}
   <p>No blog posts found.</p>
 {% endif %}
