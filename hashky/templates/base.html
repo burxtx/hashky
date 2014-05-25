@@ -18,19 +18,17 @@
 <body>
   {% block nav %}{% endblock %}
 
-  <header id="overview" class="page-header">
-    <div class="container">
-      <h2 class="title">{% block head %}{% endblock %}</h2>
-      <p class="lead description">{% block subhead %}{% endblock %}</p>
-    </div>
-  </header>
+  <div class="blog-header">
+    <h1 class="blog-title">{% block head %}{% endblock %}</h1>
+    <p class="lead blog-description">{% block subhead %}{% endblock %}</p>
+  </div>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-sm-8">
         {% block content %}{% endblock %}
       </div>
-      <div class="col-md-3">
+      <div class="col-sm-4">
         {% block rcontent %}{% endblock %}
       </div>
     </div>

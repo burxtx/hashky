@@ -2,6 +2,7 @@
 {% block page %}
     {{ form.media }}
     <link rel="stylesheet" href="{{ STATIC_URL }}blog/css/jquery.ui.autocomplete.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}blog/css/new-post.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}tagmanager/tagmanager.css">
     <!-- <link rel="stylesheet" href="{{ STATIC_URL }}jQuery-Tags-Input/jquery.tagsinput.css"> -->
     <script type="text/javascript" src="{{ STATIC_URL }}blog/js/jquery.ui.autocomplete.js"></script>
@@ -45,36 +46,26 @@
     <a href="/user/{{ user }}/" class="username">My posts</a>
     <a href="/user/{{ user }}/draft" class="username">My drafts</a>
 </div>
-<form class="form-horizontal" method="post" action=".">
+<form class="forms-signin" method="post" action=".">
     {% csrf_token %}
     {{ form.non_field_errors }}
-	<div class="control-group">
-    {{ form.title.errors }}
-		<label class="control-label" for="id_username">Title:</label>
-    		<div class="controls">
-    			{{ form.title }}
-    		</div>
+    <div class="form-group">
+        {{ form.title.errors }}
+        <!-- {{ form.title }} -->
+        <input class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.html_name }}" type="text" autofocus="" required="" placeholder="Input title..." />
     </div>
-    <div class="control-group">
-    {{ form.body.errors }}
-		<label class="control-label" for="id_post">Post:</label>
-			<div class="controls">
-				{{ form.body }}
-    		</div>
+    <div class="form-group">
+        {{ form.body.errors }}
+        {{ form.body }}
+       <!--  <textarea class="wmd-input form-control" id="{{ form.body.id_for_label }}" name="{{ form.body.html_name }}" placeholder="Body" /> -->
     </div>
-    <div class="control-group">
-    {{ form.tags.errors }}
-        <label class="control-label" for="id_tag">Tag:</label>
-            <div class="controls">
-                <!-- {{ form.tags }} -->
-                <input name="tags" id="tags" type="text" placeholder="Input tags..." class="tm-input" />
-            </div>
+    <div class="form-group">
+        {{ form.tags.errors }}
+        <input name="{{ form.body.html_name }}" id="{{ form.tags.id_for_label }}" type="text" placeholder="Input tags..." class="tm-input form-control" />
     </div>
-    <div class="control-group">
-        <div class="controls">
-            <button name="submit_live" value="submit" type="submit" class="btn btn-success">Submit</button>
-            <button name="submit_draft" value="save as draft" type="submit" class="btn btn-warning">Save as draft</button>
-        </div>
+    <div class="form-group">
+        <button name="submit_live" value="submit" type="submit" class="btn btn-success">Submit</button>
+        <button name="submit_draft" value="save as draft" type="submit" class="btn btn-warning">Save as draft</button>
     </div>
     <!-- <input type="submit" value="save" /> -->
 </form>

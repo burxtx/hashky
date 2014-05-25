@@ -3,34 +3,34 @@
 {% if blogposts %}
   <div class="post-bucket">
     {% for blogpost in blogposts %}
-      <div class="post-item">
-        <h2 class="post-item-title">
-        <a href="/blogpost/{{ blogpost.id }}" class="blogpost-title">{{ blogpost.title }}</a></h2>
-        <div class="timestamp">{{ blogpost.create_time|timesince }}</div>
-        <div class="row">
-          <div class="span9">
-            {% if show_user %}
+      <div class="blog-post">
+        <h2 class="blog-post-title"><a href="/blogpost/{{ blogpost.id }}">{{ blogpost.title }}</a></h2>
+        <p class="blog-post-meta">
+          <div class="datetime">
+            {{ blogpost.create_time }}
+          </div>
+          {% if show_user %}
+            <div class="author">
               Posted by:  
               <a href="/user/{{ blogpost.user.username }}/" class="username">
               {{ blogpost.user.username }}</a>
-            {% endif %}
-          </div>
-          <div class="span9">
-            {% if show_edit %}
-            <!-- <a href="/save/?id={{ blogpost.id|urlencode }}" class="edit">[edit]</a> -->
-              <div class="post-controls">
-                <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
-              </div>
-              <div class="post-controls">
-                <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
-              </div>
-            {% endif %}
-          </div>
-        </div>
+            </div>
+          {% endif %}
+          {% if show_edit %}
+            <div class="post-controls">
+              <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
+            </div>
+            <div class="post-controls">
+              <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
+            </div>
+          {% endif %}
+        </p>
         {% if show_body %}
-          {{ blogpost.body|markdown|safe|truncatewords_html:20 }}<a href="/blogpost/{{ blogpost.id }}">Read more...</a>
+          <div class="blog-body">
+            {{ blogpost.body|markdown|safe|truncatewords_html:20 }}
+            <a href="/blogpost/{{ blogpost.id }}">Read more...</a>
+          </div>
         {% endif%}
-        <br />
         {% if show_tags %}
           {% if blogpost.tag_set.all %}
             <div class="post-tags">
@@ -40,10 +40,8 @@
                 </div>
               {% endfor %}
             </div>
-          {% else %}
           {% endif %}
         {% endif %}
-      <hr />
       </div>
     {% endfor %}
   </div>
