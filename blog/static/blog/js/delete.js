@@ -32,7 +32,7 @@ $(document).ready(function(){
 	$(document).on("click", ".delete", function(){
 		if (!confirm('Are you sure you want to delete?')) { return; }
 		var id = $(this).attr("id");
-		var item = $(this).parents(".post-item");
+		var item = $(this).parents(".blog-post");
 		// var url = $(this).attr("href");
 		var url = '/blogpost/delete/'+id+'/';
 		$.post(url, {
