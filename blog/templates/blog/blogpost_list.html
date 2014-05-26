@@ -5,9 +5,7 @@
     <div class="blog-post">
       <h2 class="blog-post-title"><a href="/blogpost/{{ blogpost.id }}">{{ blogpost.title }}</a></h2>
       <div class="blog-post-meta">
-        <div class="datetime">
-          {{ blogpost.create_time }}
-        </div>
+        {{ blogpost.create_time }}
         {% if show_user %}
           <div class="author">
             Posted by:  
@@ -16,17 +14,19 @@
           </div>
         {% endif %}
         {% if show_edit %}
-          <div class="post-controls">
+          <!-- <div class="post-controls"> -->
             <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
-          </div>
-          <div class="post-controls">
+          <!-- </div> -->
+          <!-- <div class="post-controls"> -->
             <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
-          </div>
+          <!-- </div> -->
         {% endif %}
       </div>
       {% if show_body %}
-        {{ blogpost.body|markdown|safe|truncatewords_html:20 }}
-        <a href="/blogpost/{{ blogpost.id }}">Read more...</a>
+        {{ blogpost.body|markdown|safe|truncatewords_html:300 }}
+        {% ifnotequal blogpost.body|markdown|safe|truncatewords_html:30|length blogpost.body|markdown|safe|truncatewords_html:31|length %}
+          <a href="/blogpost/{{ blogpost.id }}">Read more...</a>
+        {% endifnotequal %}
       {% endif%}
       {% if show_tags %}
         {% if blogpost.tag_set.all %}
