@@ -31,11 +31,15 @@
         $(function(){
             $('.tm-input').tagsManager({
                 // hiddenTagListId: 'hidden_tags'
+                AjaxPush: 'blogpost/edit/(\d+)/',
+                AjaxPushAllTags: true
+                // AjaxPushParameters: { 'authToken': 'foobar' }
             });
         });
         // $('button').click(function(){
         //     $('#tags').val($("[name='hidden-tags']").val());
         // });
+        
     </script>
 {% endblock %}
 {% block title %}New shares{% endblock %}

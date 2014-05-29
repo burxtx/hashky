@@ -1,4 +1,5 @@
 <script src="{{ STATIC_URL }}blog/js/delete.js"></script>
+<script src="{{ STATIC_URL }}blog/js/edit.js"></script>
 {% load markup %}
 {% if blogposts %}
   {% for blogpost in blogposts %}
@@ -15,7 +16,8 @@
         {% endif %}
         {% if show_edit %}
           <!-- <div class="post-controls"> -->
-            <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
+            <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool edit">[edit]</a>
+            <!-- <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a> -->
           <!-- </div> -->
           <!-- <div class="post-controls"> -->
             <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>

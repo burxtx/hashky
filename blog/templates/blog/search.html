@@ -1,17 +1,19 @@
 {% extends "blog/base.html" %}
 {% block page %}
-	<script type="text/javascript" src="{{ STATIC_URL }}blog/search.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}blog/search.js"></script>
 {% endblock %}
 {% block title %}Search BlogPosts{% endblock %}
 {% block head %}Search BlogPosts{% endblock %}
 {% block content %}
-<form id="search-form" method="get" action=".">
-	{{ form.as_p }}
-	<input type="submit" value="search" />
+<form id="search-form" role="form" method="get" action=".">
+    <div class="form-group">
+        <input id="{{ form.query.id_for_label }}" class="form-control" type="text" placeholdder="search">
+    </div>
+    <button class="btn btn-default" type="submit">search</button>
 </form>
 <div id="search-results">
-	{% if show_results %}
-		{% include "blog/blogpost_list.html" %}
-	{% endif %}
+    {% if show_results %}
+        {% include "blog/blogpost_list.html" %}
+    {% endif %}
 </div>
 {% endblock %}
