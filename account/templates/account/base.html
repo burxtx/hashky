@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="stylesheet" href="{{ STATIC_URL }}account/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ STATIC_URL }}account/css/signin.css">
   <script src="{{ STATIC_URL }}account/jquery.js"></script>
   <script src="{{ STATIC_URL }}account/js/bootstrap.js"></script>
   <!--script src="{{ STATIC_URL }}account/js/nav.js"></script>-->
@@ -45,8 +46,10 @@
               <a href="{% url account:logout_page %}">Logout</a>
             </li>
             <li class="">
-              <form class="navbar-search pull-right">
-                <input type="text" class="search-query" placeholder="Search">
+              <form id="search" action="/search" method="get" class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="search">
+                </div>
               </form>
             </li>
           {% else %}

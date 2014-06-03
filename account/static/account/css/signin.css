@@ -1,6 +1,30 @@
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
 
 body {
-    background-color: #EEEEEE;
+    background-color: #f7f7f7;
     padding-bottom: 40px;
     padding-top: 40px;
 }
@@ -34,4 +58,18 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin-bottom: 10px;
+}
+.page-title {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 40px;
+  font-weight: normal;
+}
+.page-description {
+  font-size: 20px;
+  color: #999;
+}
+.page-main {
+  font-size: 18px;
+  line-height: 1.5;
 }

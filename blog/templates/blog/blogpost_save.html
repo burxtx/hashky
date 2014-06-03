@@ -1,11 +1,14 @@
 {% extends "blog/base.html" %}
+{% block title %}New shares{% endblock %}
+{% block head %}Share new ideas{% endblock %}
+{% block subhead %}{% endblock %}
 {% block page %}
     {{ form.media }}
     <link rel="stylesheet" href="{{ STATIC_URL }}blog/css/jquery.ui.autocomplete.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}blog/css/new-post.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}tagmanager/tagmanager.css">
     <!-- <link rel="stylesheet" href="{{ STATIC_URL }}jQuery-Tags-Input/jquery.tagsinput.css"> -->
-    <script type="text/javascript" src="{{ STATIC_URL }}blog/js/jquery.ui.autocomplete.js"></script>
+    <!--<script type="text/javascript" src="{{ STATIC_URL }}blog/js/jquery.ui.autocomplete.js"></script>-->
     <script type="text/javascript" src="{{ STATIC_URL }}tagmanager/tagmanager.js"></script>
     <!--<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}jQuery-Tags-Input/jquery.tagsinput.js"></script>
@@ -31,8 +34,8 @@
         $(function(){
             $('.tm-input').tagsManager({
                 // hiddenTagListId: 'hidden_tags'
-                AjaxPush: 'blogpost/edit/(\d+)/',
-                AjaxPushAllTags: true
+                // AjaxPush: 'blogpost/edit/(\d+)/',
+                // AjaxPushAllTags: true
                 // AjaxPushParameters: { 'authToken': 'foobar' }
             });
         });
@@ -42,15 +45,12 @@
         
     </script>
 {% endblock %}
-{% block title %}New shares{% endblock %}
-{% block head %}Share new ideas{% endblock %}
-{% block subhead %}{% endblock %}
 {% block content %}
 <div class="shortcuts">
     <a href="/user/{{ user }}/" class="username">My posts</a>
     <a href="/user/{{ user }}/draft" class="username">My drafts</a>
 </div>
-<form class="forms-signin" method="post" action=".">
+<form class="forms-new-post" method="post" action=".">
     {% csrf_token %}
     {{ form.non_field_errors }}
     <div class="form-group">

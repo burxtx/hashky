@@ -29,7 +29,11 @@ h6, .h6 {
     width: 970px;
   }
 }
-
+body {
+    background-color: #f7f7f7;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
 
 /*
  * Masthead for nav
@@ -77,17 +81,17 @@ h6, .h6 {
  * Blog name and description
  */
 
-.blog-header {
+/*.page-header {
   padding-top: 20px;
   padding-bottom: 20px;
-}
-.blog-title {
+}*/
+.page-title {
   margin-top: 30px;
   margin-bottom: 0;
-  font-size: 60px;
+  font-size: 40px;
   font-weight: normal;
 }
-.blog-description {
+.page-description {
   font-size: 20px;
   color: #999;
 }
@@ -97,7 +101,7 @@ h6, .h6 {
  * Main column and sidebar layout
  */
 
-.blog-main {
+.page-main {
   font-size: 18px;
   line-height: 1.5;
 }

@@ -2,12 +2,13 @@
 {% block title %}{{ username }}{% endblock %}
 {% block head %}Blog posts from {{ username }}{% endblock %}
 {% block page %}
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("body").data("username", "{{username}}");
-  });
-</script>
-<script src="{{ STATIC_URL }}blog/js/follow.js"></script>{% endblock %}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("body").data("username", "{{username}}");
+    });
+  </script>
+  <script src="{{ STATIC_URL }}blog/js/follow.js"></script>
+{% endblock %}
 {% block content %}
   {% include "blog/blogpost_list.html" %}
 {% endblock %}

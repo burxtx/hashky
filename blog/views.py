@@ -123,6 +123,10 @@ def _blogpost_save(request, form, status, id=None):
 #         tags = request.POST['hidden-tags']
 @login_required
 def blogpost_save_page(request, id=None):
+    if request.is_ajax():
+        results={'success': True}
+        json = simplejson.dumps(results)
+        return HttpResponse(json, mimetype='application/json')
     if request.method == 'POST':
         tmp_req = request.POST.copy()
         tmp_req['tags'] = request.POST['hidden-tags']
