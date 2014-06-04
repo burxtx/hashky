@@ -1,13 +1,14 @@
 <html>
   <head>
     <title>Hashky|Bind with WeChat</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->  
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.css">
-    <!-- Included JS Files (Compressed) -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{{ STATIC_URL }}account/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}account/css/signin.css">
     <script src="{{ STATIC_URL }}jquery.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+    <script src="{{ STATIC_URL }}account/js/nav.js"></script>
   </head>
   <body>
     <h2>To bind with WeChat, please login.</h2>
@@ -15,26 +16,20 @@
       <p>Your username and password didn't match.
         Please try again.</p>
     {% endif %}
-    <form class="form-horizontal" method="post" action="" >
-      <div class="control-group">
+    <form class="form-signin" method="post" action="" >
+      <div class="form-group">
         <label class="control-label" for="id_username">Username:</label>
-        <div class="controls">
-          <input type="text" name="username" id="inputEmail" placeholder="Email">
-        </div>
+          <input class="form-control" type="text" name="username" id="inputEmail" placeholder="Email">
       </div>
-      <div class="control-group">
+      <div class="form-group">
         <label class="control-label" for="id_password">Password:</label>
-        <div class="controls">
-          <input type="password" name="password" id="inputPassword" placeholder="Password">
-        </div>
+          <input class="form-control" type="password" name="password" id="inputPassword" placeholder="Password">
       </div>
-      <div class="control-group">
-        <div class="controls">
-          <button type="submit" class="btn" value="Login">Log in</button>
+      <div class="form-group">
+          <button type="submit" class="btn btn-lg btn-primary btn-block" value="Login">Log in</button>
           <!--following line is required for redirect-->
           <!-- <input type="hidden" name="next" value="{{ next|escape }}" /> -->
           <input type="hidden" name="next" value="{{ next }}" />
-        </div>
       </div>
     </form>
   </body>

@@ -1,11 +1,14 @@
+{% load markup %}
 {% if drafts %}
-  <div class="post-bucket">
-    {% for draft in drafts %}
-      <div class="post-item">
-        <h3 class="post-item-title">
-        <a href="/draft/{{ draft.id }}" class="title">{{ draft.title }}</a></h3>
+  {% for draft in drafts %}
+    <div class="blog-post">
+      <h2 class="blog-post-title"><a href="/draft/{{ draft.id }}" class="title">{{ draft.title }}</a></h2>
+        {{ draft.create_time }}
         {% if show_body %}
-          {{ draft.body|safe|truncatewords_html:20 }}<a href="/draft/{{ draft.id }}">Read more...</a>
+          {{ draft.body|markdown|safe|truncatewords_html:300 }}
+          {% ifnotequal blogpost.body|markdown|safe|truncatewords_html:30|length blogpost.body|markdown|safe|truncatewords_html:31|length %}
+            <a href="/draft/{{ draft.id }}">Read more...</a>
+          {% endifnotequal %}
         {% endif%}
         <br />
         {% if show_tags %}
@@ -20,10 +23,9 @@
           {% else %}
           {% endif %}
         {% endif %}
-      </div>
       <hr />
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
 {% else %}
   <p>No draft.</p>
 {% endif %}

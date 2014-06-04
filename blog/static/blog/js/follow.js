@@ -4,7 +4,7 @@ function btnChange(){
 		// 	$(this).css("background-color", "red");
 		// });
 		// $(".btn.icon.follow").replaceWith($(".btn.icon.unfollow"))
-		$(".follow").replaceWith('<a class="btn unfollow" href="javascript:void(0)">Unfollow</a>')
+		$(".follow").replaceWith('<a class="btn btn-default unfollow" href="javascript:void(0)">Unfollow</a>')
 	}else{
 		// $(".unfollow").on('click', function(){
 		// 	$(this).css("background-color", "green");
