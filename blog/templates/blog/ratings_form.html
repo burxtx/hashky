@@ -12,11 +12,11 @@
     {{ rating_form }}
     <p>
         {% if user.is_authenticated %}
-            <input type="submit" value="Vote"></p>
+            <button class="btn btn-default" type="submit" value="Vote">vote</button></p>
         {% else %}
             <a href="{% url account:login_page %}?next={{ request.path }}">Vote</a>
         {% endif %}
     </p>
-    <span class="success" style="display: none;">Vote registered!</span>
+    <span class="success" style="display: none;">Vote submited!</span>
     <span class="error" style="display: none;">Errors...</span>
 </form>
