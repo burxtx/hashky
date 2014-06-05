@@ -30,7 +30,7 @@
             <a href="/">Home</a>
           </li>
         </ul>
-          {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
           <ul class="nav navbar-nav navbar-left">
             <li class="">
               <a href="/save/">New</a>
@@ -57,7 +57,7 @@
               <a href="{% url account:logout_page %}">Logout</a>
             </li>
           </ul>
-          {% else %}
+        {% else %}
           <ul class="nav navbar-nav navbar-right">
             <li class="">
               <!-- template syntax doesn't support \n\r\ -->
@@ -71,7 +71,7 @@
               <a href="{% url account:register_page %}">sign up</a>
             </li>
           </ul>
-          {% endif %}
+        {% endif %}
       </div>
     </div>
   </div>
