@@ -169,9 +169,6 @@ body {
 .datetime {
   float: left;
 }
-.post-controls {
-  float: right;
-}
 .post-tag{
   display:inline-block;
   color: #B3B3B1;

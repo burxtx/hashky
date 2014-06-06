@@ -15,13 +15,9 @@
           </div>
         {% endif %}
         {% if show_edit %}
-          <!-- <div class="post-controls"> -->
             <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool edit">[edit]</a>
             <!-- <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a> -->
-          <!-- </div> -->
-          <!-- <div class="post-controls"> -->
             <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
-          <!-- </div> -->
         {% endif %}
       </div>
       {% if show_body %}

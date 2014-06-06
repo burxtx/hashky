@@ -4,9 +4,12 @@
 
 {% get_rating_score for object as score %}
 {% if score %}
-  <div class="row">
-    <div class="col-sm-6">Average score: {{ score.average|floatformat }}</div>
-    <div class="col-sm-6">Number of votes: {{ score.num_votes }}</div>
+  <ul class="list-inline">
+    <li class="col-sm-6">Average score {{ score.average|floatformat }}</li>
+    <li class="col-sm-6">{{ score.num_votes }} voted</li>
+  </ul>
 {% else %}
-    Nobody voted
+  <ul class="list-inline">
+    <li>Nobody voted</li>
+  </ul>
 {% endif %}
