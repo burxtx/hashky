@@ -39,12 +39,15 @@
       </li>
     </ul>
   {% endif %}
-  {% if user.id == blogpost.user_id%}
-    {% include "blog/ratings.html" %}
-  {% else %}
-    {% include "blog/ratings.html" %}
-    {% include "blog/ratings_form.html" %}
-  {% endif %}
+  <div class="review">
+    Review
+    <div class="vote-summary">
+      {% include "blog/ratings.html" %}
+    </div>
+    {% if user.id != blogpost.user_id%}
+      {% include "blog/ratings_form.html" %}
+    {% endif %}
+  </div>
 <!--   {% include "blog/comments/comments.html" %}
   {% include "blog/comments/comment_form.html" %} -->
 {% endblock %}

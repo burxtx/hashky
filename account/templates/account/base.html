@@ -8,7 +8,6 @@
   <script src="{{ STATIC_URL }}account/jquery.js"></script>
   <script src="{{ STATIC_URL }}account/js/bootstrap.js"></script>
   <script src="{{ STATIC_URL }}account/js/nav.js"></script>
-  <!--<script src="http://files.cnblogs.com/rubylouvre/bootstrap-button.js"></script>-->
 {% endblock %}
 
 {% block nav%}
@@ -26,25 +25,25 @@
       </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <li class="">
+          <li>
             <a href="/">Home</a>
           </li>
         </ul>
         {% if user.is_authenticated %}
           <ul class="nav navbar-nav navbar-left">
-            <li class="">
+            <li>
               <a href="/save/">New</a>
             </li>
-            <li class="">
+            <li>
               <a href="/search/">Search</a>
             </li>
-            <li class="">
+            <li>
               <a href="/user/{{ user.username }}/">{{ user.username }}'s post</a>
             </li>
-            <li class="">
+            <li>
               <a href="/wechat/product/">DongXi</a>
             </li>
-            <li class="">
+            <li>
               <form id="search" action="/search" method="get" class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="search">
@@ -53,21 +52,20 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="">
+            <li>
               <a href="{% url account:logout_page %}">Logout</a>
             </li>
           </ul>
         {% else %}
           <ul class="nav navbar-nav navbar-right">
-            <li class="">
-              <!-- template syntax doesn't support \n\r\ -->
+            <li>
               {% if request.path not in "/register/success/" and request.path not in "/accounts/login/" %}
                 <a href="{% url account:login_page %}?next={{ request.path }}">login</a>
               {% else %}
-                <a href="{% url account:login_page %}?next=/">login</a>
+                <a href="{% url account:login_page %}">login</a>
               {% endif %}
             </li>
-            <li class="">
+            <li>
               <a href="{% url account:register_page %}">sign up</a>
             </li>
           </ul>

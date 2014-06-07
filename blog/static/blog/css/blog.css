@@ -155,6 +155,9 @@ body {
 .opts {
   float: right;
 }
+.vote-summary {
+  float: right;
+}
 
 /*
  * Footer

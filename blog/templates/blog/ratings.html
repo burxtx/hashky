@@ -1,12 +1,10 @@
-<div class="review">Review</div>
-
 {% load ratings_tags %}
 
-{% get_rating_score for object as score %}
+{% get_rating_score for blogpost as score %}
 {% if score %}
   <ul class="list-inline">
-    <li class="col-sm-6">Average score {{ score.average|floatformat }}</li>
-    <li class="col-sm-6">{{ score.num_votes }} votes</li>
+    <li>Average score {{ score.average|floatformat }}</li>
+    <li>{{ score.num_votes }} votes</li>
   </ul>
 {% else %}
   <ul class="list-inline">
