@@ -15,9 +15,17 @@
           </div>
         {% endif %}
         {% if show_edit %}
-            <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool edit">[edit]</a>
-            <!-- <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a> -->
-            <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
+          <ul class="opts list-inline">
+            <li>
+              <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool edit">
+              <span class="glyphicon glyphicon-pencil"></span></a>
+            </li>
+          <!-- <a href="{% url blog:blogpost_update blogpost.id %}" class="post tool edit">[edit]</a> -->
+            <li>
+              <a id="{{ blogpost.id }}" href="javascript:void(0)" class="post tool delete">
+              <span class="glyphicon glyphicon-trash"></span></a>
+            </li>
+          </ul>
         {% endif %}
       </div>
       {% if show_body %}

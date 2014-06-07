@@ -68,8 +68,10 @@
         <input name="{{ form.tags.html_name }}" id="{{ form.tags.id_for_label }}" type="text" placeholder="Input tags..." value="{{ form.tags.value }}" class="tm-input form-control" />
     </div>
     <div class="form-group">
-        <button name="submit_live" value="submit" type="submit" class="btn btn-success">Submit</button>
-        <button name="submit_draft" value="save as draft" type="submit" class="btn btn-warning">Save as draft</button>
+        <button name="submit_live" value="submit" type="submit" class="btn btn-success">
+          <span class="glyphicon glyphicon-ok"></span> Submit</button>
+        <button name="submit_draft" value="save as draft" type="submit" class="btn btn-warning">
+          <span class="glyphicon glyphicon-lock"></span> Save as draft</button>
     </div>
     <!-- <input type="submit" value="save" /> -->
 </form>

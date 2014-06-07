@@ -50,15 +50,15 @@ body {
 }
 
 .post.tool, .metadata{
-	float: right;
-	position: relative;
+/*	float: right;
+	position: relative;*/
 	/*margin-left: 20px;*/
-	display:inline-block;
+	/*display:inline-block;*/
 	/*color: #B3B3B1;*/
-	color: #A8B1BA;
+	/*color: #A8B1BA;
     font-size: 13px;
     font-weight: bold;
     line-height: 20px;
     min-height: 22px;
-    text-align: right;
+    text-align: right;*/
 }

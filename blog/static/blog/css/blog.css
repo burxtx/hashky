@@ -152,7 +152,9 @@ body {
   margin-bottom: 20px;
   color: #999;
 }
-
+.opts {
+  float: right;
+}
 
 /*
  * Footer
