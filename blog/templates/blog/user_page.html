@@ -14,14 +14,24 @@
 {% endblock %}
 {% block rcontent %}
   {% ifequal user.username username %}
-    <a href="/following/{{ username }}/">People you are following...</a>
-    <a href="/tag-following/{{ username }}/">Tags you like...</a>
+    <div class="list-group">
+      <a class="list-group-item" href="/following/{{ username }}/">People you are following</a>
+      <a class="list-group-item" href="/tag-following/{{ username }}/">Tags you like</a>
+    </div>
   {% else %}
-    {% if is_following %}
-      <a class="btn btn-default unfollow" href="javascript:void(0)">Unfollow</a>
-    {% else %}
-      <!-- <a class="btn icon follow" href="/friend/add/?username={{ username }}">Follow</a> -->
-      <a class="btn btn-success follow" href="javascript:void(0)">Follow</a>
-    {% endif %}
+    <div class="list-group">
+      <a href="#" class="list-group-item">
+        <h4 class="list-group-item-heading">About</h4>
+        <p class="list-group-item-text">self introduction</p>
+      </a>
+      <li class="list-group-item">
+      {% if is_following %}
+        <a class="btn btn-default unfollow" href="javascript:void(0)">Unfollow</a>
+      {% else %}
+        <!-- <a class="btn icon follow" href="/friend/add/?username={{ username }}">Follow</a> -->
+        <a class="btn btn-success follow" href="javascript:void(0)">Follow</a>
+      </li>
+      {% endif %}
+    </div>
   {% endifequal %}
 {% endblock %}
