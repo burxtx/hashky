@@ -14,7 +14,20 @@
   <div class="form-group">
     <button class="btn btn-success" action="/blogpost/{{ draft.id }}/" id="publish" name="submit_live" value="submit" type="submit">Publish</button>
     <button class="btn btn-default" name="back" value="back" type="submit" onclick="goBack()" >Back</button>
-    <a class="post-edit" href="{% url blog:blogpost_update draft.id %}">[edit]</a>
+    <ul class="list-inline opts">
+      <li>
+        <a href="{% url blog:blogpost_update draft.id %}">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+      </li>
+      <li>
+        <form name="deleteForm" onsubmit="return confirm('Are you sure you want to delete this draft?')" method="post" action="{% url blog:blogpost_delete draft.id %}">
+          {% csrf_token %}
+          <a href="javascript:if(confirm('Are you sure you want to delete?')){deleteForm.submit();}">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+        </form>
+      </li>
   </div>
 {% endblock %}
 
