@@ -3,7 +3,9 @@
   {% for draft in drafts %}
     <div class="blog-post">
       <h2 class="blog-post-title"><a href="/draft/{{ draft.id }}" class="title">{{ draft.title }}</a></h2>
-        {{ draft.create_time }}
+        <div class="blog-post-meta">
+          {{ draft.create_time }}
+        </div>
         {% if show_body %}
           {{ draft.body|markdown|safe|truncatewords_html:300 }}
           {% ifnotequal blogpost.body|markdown|safe|truncatewords_html:30|length blogpost.body|markdown|safe|truncatewords_html:31|length %}

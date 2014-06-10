@@ -12,8 +12,10 @@
     </div>
   {% endfor %}
   <div class="form-group">
-    <button class="btn btn-success" action="/blogpost/{{ draft.id }}/" id="publish" name="submit_live" value="submit" type="submit">Publish</button>
-    <button class="btn btn-default" name="back" value="back" type="submit" onclick="goBack()" >Back</button>
+    <button class="btn btn-success" action="/blogpost/{{ draft.id }}/" id="publish" name="submit_live" value="submit" type="submit">
+      <span class="glyphicon glyphicon-ok"></span> Publish</button>
+    <button class="btn btn-default" name="back" value="back" type="submit" onclick="goBack()">
+      <span class="glyphicon glyphicon-circle-arrow-left"></span> Back</button>
     <ul class="list-inline opts">
       <li>
         <a href="{% url blog:blogpost_update draft.id %}">
