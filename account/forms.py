@@ -33,3 +33,7 @@ class RegistrationForm(forms.Form):
         except ObjectDoesNotExist:
             return username
         raise forms.ValidationError('Username is already taken.')
+
+class AccountForm(forms.Form):
+    avatar = forms.ImageField()
+    introduction = forms.CharField(widget = forms.TextInput(attrs={'size': 128}))
