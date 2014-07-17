@@ -4,8 +4,12 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 from django.contrib.auth.views import login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from account.forms import *
+from account.models import *
+import pdb
+pdb.set_trace()
 
 def logout_page(request):
     logout(request)
@@ -36,20 +40,30 @@ def register_page(request):
 
 @login_required
 def account_page(request):
-    if request.method == 'GET':
-        pass
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
+        form = AccountForm(request.POST, request.FILES)
         if form.is_valid():
-            user = User.objects.create_user(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1'],
-                email=form.cleaned_data['email'],
+            user = User.objects.get(username=form.cleaned_data['username'])
+            account = Account.objects.create(
+                user=user,
+                avatar=form.cleaned_data['avatar'],
+                introduction=form.cleaned_data['introduction'],
                 )
-            return HttpResponseRedirect('/register/success/')
+            account.save()
+            return HttpResponseRedirect('/user/%s/' % request.user.username)
     else:
-        form = RegistrationForm()
+    	# first time query, the account model is empty
+        try:
+            account = Account.objects.get(user_id=request.user.id)
+            introduction = account.introduction
+        except:
+        	introduction = ''
+        form = AccountForm({
+            'username': request.user.username,
+            'introduction': introduction,
+            })
     variables = RequestContext(request, {
         'form':form
         })
-    return render_to_response('registration/register.html', variables)
+    return render_to_response('account/account.html', variables)
+    

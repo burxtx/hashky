@@ -35,5 +35,6 @@ class RegistrationForm(forms.Form):
         raise forms.ValidationError('Username is already taken.')
 
 class AccountForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=20)
     avatar = forms.ImageField()
     introduction = forms.CharField(widget = forms.TextInput(attrs={'size': 128}))

@@ -53,14 +53,25 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="{% url account:logout_page %}">Logout</a>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                {{ user.username }} <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="{% url account:account_page %}">
+                    <span class="glyphicon glyphicon-cog"></span> Settings</a>
+                </li>
+                <li>
+                  <a href="{% url account:logout_page %}">
+                    <span class="glyphicon glyphicon-off"></span> Logout</a>
+                </li>
+              </ul>
             </li>
           </ul>
         {% else %}
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <!-- template syntax doesn't support \n\r\ -->
               {% if request.path not in "/register/success/" and request.path not in "/accounts/login/" %}
                 <a href="{% url account:login_page %}?next={{ request.path }}">login</a>
               {% else %}
