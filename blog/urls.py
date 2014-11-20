@@ -2,7 +2,6 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
-from django.views.generic.simple import direct_to_template
 from django.views.generic import FormView
 from blog.forms import BlogPostSaveForm
 # Uncomment the next two lines to enable the admin:

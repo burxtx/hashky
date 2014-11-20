@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% block title %}{{ blogpost.title }}{% endblock %}
 {% block head %}{{ blogpost.title }}{% endblock %}
-{% load markup %}
+<!-- {% load markup %} -->
 {% block content %}
   <div class="blog-post-meta">
     Created in {{ blogpost.create_time|timesince }} ago

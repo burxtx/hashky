@@ -1,7 +1,7 @@
 {% extends "wechat/base.html" %}
 {% block title %}{{ product.name }}{% endblock %}
 {% block head %}{{ product.name }}{% endblock %}
-{% load markup %}
+<!-- {% load markup %} -->
 {% block content %}
   {{ product.name|markdown|safe }}
   {{ product.desc|markdown|safe }}
