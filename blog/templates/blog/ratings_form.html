@@ -6,7 +6,7 @@
 {% load ratings_tags %}
 
 {% get_rating_form for object as rating_form %}
-<form action="{% url ratings_vote %}" class="ratings" method="post">
+<form action="{% url 'ratings_vote' %}" class="ratings" method="post">
   {% csrf_token %}
     <ul class="list-inline">
       <li>{{ rating_form }}</li>
@@ -14,7 +14,7 @@
         {% if user.is_authenticated %}
           <!-- <button class="btn btn-default" type="submit" value="Vote">vote</button> -->
         {% else %}
-          <a class="btn btn-default" href="{% url account:login_page %}?next={{ request.path }}">vote</a>
+          <a class="btn btn-default" href="{% url 'account:login_page' %}?next={{ request.path }}">vote</a>
         {% endif %}
         </li>
     <span class="success" style="display: none;">Vote submited!</span>

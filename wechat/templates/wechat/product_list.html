@@ -1,5 +1,4 @@
 <script src="{{ STATIC_URL }}wechat/js/delete.js"></script>
-<!-- {% load markup %} -->
 {% if products %}
   <div class="post-bucket">
     {% for product in products %}
@@ -19,7 +18,7 @@
               {% if show_edit %}
               <!-- <a href="/save/?id={{ blogpost.id|urlencode }}" class="edit">[edit]</a> -->
                 <div class="post-controls">
-                  <a href="{% url blogpost_update blogpost.id %}" class="post tool edit">[edit]</a>
+                  <a href="{% url 'blogpost_update' blogpost.id %}" class="post tool edit">[edit]</a>
                 </div>
                 <div class="post-controls">
                   <a id="{{blogpost.id}}" href="javascript:void(0)" class="post tool delete">[delete]</a>
@@ -28,7 +27,7 @@
             </div>
           </div>
           {% if show_body %}
-            {{ product.desc|markdown|safe|truncatewords_html:20 }}<a href="/wechat/product/{{ product.id }}">Read more...</a>
+            {{ product.desc|safe|truncatewords_html:20 }}<a href="/wechat/product/{{ product.id }}">Read more...</a>
           {% endif%}
           <br />
           <!-- {% if show_tags %}

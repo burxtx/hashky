@@ -1,7 +1,6 @@
 {% extends "blog/base.html" %}
 {% block title %}{{ blogpost.title }}{% endblock %}
 {% block head %}{{ blogpost.title }}{% endblock %}
-<!-- {% load markup %} -->
 {% block content %}
   <div class="blog-post-meta">
     Created in {{ blogpost.create_time|timesince }} ago
@@ -25,12 +24,12 @@
   {% if show_edit %}
     <ul class="list-inline opts">
       <li>
-        <a href="{% url blog:blogpost_update blogpost.id %}">
+        <a href="{% url 'blog:blogpost_update' blogpost.id %}">
           <span class="glyphicon glyphicon-pencil"></span>
         </a>
       </li>
       <li>
-        <form name="deleteForm" onsubmit="return confirm('Are you sure you want to delete this post?')" method="post" action="{% url blog:blogpost_delete blogpost.id %}">
+        <form name="deleteForm" onsubmit="return confirm('Are you sure you want to delete this post?')" method="post" action="{% url 'blog:blogpost_delete' blogpost.id %}">
           {% csrf_token %}
           <a href="javascript:if(confirm('Are you sure you want to delete?')){deleteForm.submit();}">
             <span class="glyphicon glyphicon-trash"></span>
