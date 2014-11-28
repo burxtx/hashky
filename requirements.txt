@@ -2,3 +2,5 @@ django==1.6.7
 markdown
 django-pagedown
 django-generic-ratings
+south
+pillow

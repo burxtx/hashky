@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     # 'gunicorn',
     'wechat',
     'account',
+    'tastypie',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -4,10 +4,11 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.generic import FormView
 from blog.forms import BlogPostSaveForm
+from blog.api import BlogPostResource
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
-
+blogpost_resource = BlogPostResource()
 urlpatterns = patterns('blog.views',
     (r'^$', 'main_page'),
     url(r'^user/(\w+)/$', 'user_page', name="user_page"),
