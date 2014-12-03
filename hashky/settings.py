@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'wechat',
     'account',
     'tastypie',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging

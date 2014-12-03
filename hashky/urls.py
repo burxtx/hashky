@@ -5,7 +5,7 @@ from blog.api import BlogPostResource
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
-
+blogpost_resource = BlogPostResource()
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'hashky.views.home', name='home'),
